@@ -1,11 +1,16 @@
 import React from 'react';
 import "./ButtonModal.css"
 
-export default function () {
+const ButtonModal = ({children}) => {
     return (
         <div className="buttonModal">
-            <button><i className="fa fa-play"></i></button>
-            {/* {this.props.children} */}
+             <button>
+                 {children}
+            </button>
+             {/* {this.props.children} */}
         </div>
     )
 }
+
+export default ButtonModal
+

@@ -10,7 +10,13 @@ function App() {
     <div className="wrapper">
       <MediaArray />
       <MediaDisplay />
-      <ButtonModal />
+      
+      
+      <ButtonModal><i class="fa fa-play"></i></ButtonModal>
+      <ButtonModal><i class="fa fa-stop"></i></ButtonModal>
+      <ButtonModal><i class="fa fa-pause"></i></ButtonModal>
+      <ButtonModal><i class="fa fa-forward"></i></ButtonModal>
+      <ButtonModal><i class="fa fa-rewind"></i></ButtonModal>
     </div>
   )
 }
