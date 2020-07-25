@@ -7,28 +7,28 @@ export default function InputField() {
     let userInput;
 
     function trackUrl(e){
-        userInput=e.target.value
-        this.setState()
+        userInput = e.target.value;
     }
 
     function pushToArray(e){
         e.preventDefault();
-        urls.push(userInput)
-        userInput="";
-        console.log(urls);
-        
+        if(userInput===""){
+            return;
+        } else{
+            urls.push(userInput)
+            localStorage.userPlaylist = JSON.stringify(urls);
+            userInput="";
+            console.log(urls);
+        }  
     }
     
     return (
         <div className="inputField">
-            <form>
+            <form className="track">
                 <label>Insert your Url:</label>
-                <input type="text" placeholder="Add track" onChange={trackUrl}/>
-                <input type="submit" onClick={pushToArray} value="add" />
+                <input type="text" id="track" placeholder="Add track" onChange={trackUrl}/>
+                <input type="submit" onfocus="this.value=''" onClick={pushToArray} value="add" />
             </form>
         </div>
-    )
-
-  
-        
+    )      
 }

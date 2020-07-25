@@ -12,6 +12,8 @@
     width: 45px;
     margin-right: 40px;
     margin-left: 40px;
+    border: none;
+    cursor: pointer;
     /* margin: 20px 50px;
     padding-left: 40px; */
 }
