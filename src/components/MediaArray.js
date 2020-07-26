@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import InputField from './InputField';
 import './MediaArray.css';
 
-function MediaArray() {
-    let media = [];
-    
+class MediaArray extends Component {
+    render() {
+        const {urls, trackUrl, userInput, pushToArray, handlePlay} = this.props
     return (
         <div className="arrayDisplay">
-            <InputField />
+            <InputField trackUrl={trackUrl} userInput={userInput} pushToArray={pushToArray}/>
             <ul>
-                <li>Pop</li>
-                <li>Afro beat</li>
-                <li>Salsa</li>
-                <li>jazz</li>
+            {urls.map((url, index) => <li key={index} onClick={() => handlePlay(url)}>
+                {url}
+                </li>)}
             </ul>
         </div>
     )
+}
 }
 
 export default MediaArray
