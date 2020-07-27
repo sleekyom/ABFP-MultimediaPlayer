@@ -1,15 +1,16 @@
 import React from 'react';
 import "./ButtonModal.css"
 
-const ButtonModal = () => {
+const ButtonModal = ({togglePlaying, playing, handleNext, handlePrev}) => {
+    
     return (
         <div className="controlPanel">
-             <button className="controls" id="stop"><i className="fa fa-stop"></i></button>
-             <button className="controls" id="backward"><i className="fa fa-backward"></i></button>
-             <button className="controls" id="play"><i className="fa fa-play"></i></button>
-             <button className="controls" id="pause"><i className="fa fa-pause"></i></button>
-             <button className="controls" id="forward"><i className="fa fa-forward"></i></button>
-             <button className="controls" id="volume"><i className="fa fa-volume-up"></i></button>
+             <button className="controls" id="stop" ><i className="fa fa-stop"></i></button>
+             <button className="controls" id="backward" onClick={handlePrev}><i className="fa fa-backward"></i></button>
+             {playing ?  <button className="controls" id="pause" onClick={togglePlaying} ><i className="fa fa-pause"></i></button> : <button className="controls" id="play" onClick={togglePlaying}><i className="fa fa-play"></i></button>}
+           
+            
+             <button className="controls" id="forward" onClick={handleNext} ><i className="fa fa-forward"></i></button>
         </div>
     )
 }
