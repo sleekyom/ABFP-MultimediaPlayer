@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ABFP-MultimediaPlayer/static/css/main.9e8f68cb.chunk.css",
+    "main.js": "/ABFP-MultimediaPlayer/static/js/main.8b0b73bd.chunk.js",
+    "main.js.map": "/ABFP-MultimediaPlayer/static/js/main.8b0b73bd.chunk.js.map",
+    "runtime-main.js": "/ABFP-MultimediaPlayer/static/js/runtime-main.2efefdb6.js",
+    "runtime-main.js.map": "/ABFP-MultimediaPlayer/static/js/runtime-main.2efefdb6.js.map",
+    "static/js/2.9d4cbe77.chunk.js": "/ABFP-MultimediaPlayer/static/js/2.9d4cbe77.chunk.js",
+    "static/js/2.9d4cbe77.chunk.js.map": "/ABFP-MultimediaPlayer/static/js/2.9d4cbe77.chunk.js.map",
+    "index.html": "/ABFP-MultimediaPlayer/index.html",
+    "precache-manifest.03b8607b275f4849d3ab0a17c0d6a654.js": "/ABFP-MultimediaPlayer/precache-manifest.03b8607b275f4849d3ab0a17c0d6a654.js",
+    "service-worker.js": "/ABFP-MultimediaPlayer/service-worker.js",
+    "static/css/main.9e8f68cb.chunk.css.map": "/ABFP-MultimediaPlayer/static/css/main.9e8f68cb.chunk.css.map",
+    "static/js/2.9d4cbe77.chunk.js.LICENSE.txt": "/ABFP-MultimediaPlayer/static/js/2.9d4cbe77.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2efefdb6.js",
+    "static/js/2.9d4cbe77.chunk.js",
+    "static/css/main.9e8f68cb.chunk.css",
+    "static/js/main.8b0b73bd.chunk.js"
+  ]
+}
