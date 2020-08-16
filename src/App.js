@@ -2,8 +2,9 @@ import React, {useState, useEffect, useRef} from 'react';
 import MediaArray from './components/MediaArray';
 import MediaDisplay from './components/MediaDisplay';
 import './App.css'
-import ButtonModal from './components/ButtonModal';
+import ButtonPanel from './components/ButtonPanel';
 import {songsArr} from "./utils/data"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -31,12 +32,19 @@ function App() {
     } else {
       setGlobalState({...globalState, urls: songsArr})
     }
-   
+   // eslint-disable-next-line
   }, [])
 
   const togglePlaying = () => {
-    if (!currentPlaying) return
-      
+    if (!globalState.urls.length) return
+
+    if (!currentPlaying && globalState.urls.length){
+      const firstTrack = globalState.urls[0]
+      setGlobalState({...globalState,  currentIndex: 0}) 
+      setPlaying(true)
+      setCurrentPlaying({name: firstTrack.name, link: firstTrack.link})
+    }
+ 
     
     if (playing) {
       setPlaying(false);
@@ -56,6 +64,7 @@ function App() {
    
   }, [currentPlaying, playing])
 
+  // eslint-disable-next-line
   const {urls, userInput, playingUrl, currentIndex, trackName} = globalState;
 
   const { mediaAction, setMediaAction } = useState(null);
@@ -67,45 +76,88 @@ function App() {
     setGlobalState({...globalState, [name]: value})
 }
 
-const handlePlay = (url, index, name) => {
-  console.log("current", index);
-  console.log("current song", urls[index]);
-  
-  
-  setGlobalState({...globalState,  currentIndex: index}) 
-  setPlaying(true)
-  setCurrentPlaying({name, link: url})
-}
-
-const handleNext = () => {
-  let next = currentIndex + 1
-  const song = urls[next]
-  if (song) {
-    setGlobalState({...globalState,  currentIndex: next}) 
-    setCurrentPlaying({name: song.name, link: song.link})
-    setPlaying(true)
+const deleteSong = (index) => {
+  const songs = [...urls]
+  const current = songs.find((e,i) => i === index)
+  const newSongs = songs.filter((e, i) => i !== index)
+  if (current && currentPlaying) {
+    if (current.name === currentPlaying.name) {
+     const result = window.confirm("Are you sure you want to delete this song")
+     if (result) {
+    
+      setGlobalState({...globalState, urls: newSongs})
+      setCurrentPlaying({name: "", link: ""})
+      setPlaying(false)
+     } else {
+       return
+     }
+    } else {
+     
+      setGlobalState({...globalState, urls: newSongs})
+    }
   } else {
-    next = 0
-    setGlobalState({...globalState,  currentIndex: next}) 
-    setCurrentPlaying({name: urls[next].name, link: urls[next].link})
-    setPlaying(true)
+  
+    setGlobalState({...globalState, urls: newSongs})
   }
  
 }
 
-const handlePrev = () => {
-  let prev = currentIndex - 1
-  const song = urls[prev]
-  if (song) {
-    setGlobalState({...globalState, currentIndex: prev}) 
-    setCurrentPlaying({name: song.name, link: song.link})
+const handlePlay = (url, index, name) => {
+ 
+
+  if (urls.length) {
+    console.log("current", index);
+    console.log("current song", urls[index]);
+    setGlobalState({...globalState,  currentIndex: index}) 
     setPlaying(true)
+    setCurrentPlaying({name, link: url})
   } else {
-    prev = urls.length - 1
-    setGlobalState({...globalState,  currentIndex: prev}) 
-    setCurrentPlaying({name: urls[prev].name, link: urls[prev].link})
-    setPlaying(true)
+    return
   }
+  
+  
+
+}
+
+const handleNext = () => {
+  if (urls.length) {
+    let next = currentIndex + 1
+    const song = urls[next]
+    if (song) {
+      setGlobalState({...globalState,  currentIndex: next}) 
+      setCurrentPlaying({name: song.name, link: song.link})
+      setPlaying(true)
+    } else {
+      next = 0
+      setGlobalState({...globalState,  currentIndex: next}) 
+      setCurrentPlaying({name: urls[next].name, link: urls[next].link})
+      setPlaying(true)
+    }
+  } else {
+    return
+  }
+
+ 
+}
+
+const handlePrev = () => {
+  if (urls.length) {
+    let prev = currentIndex - 1
+    const song = urls[prev]
+    if (song) {
+      setGlobalState({...globalState, currentIndex: prev}) 
+      setCurrentPlaying({name: song.name, link: song.link})
+      setPlaying(true)
+    } else {
+      prev = urls.length - 1
+      setGlobalState({...globalState,  currentIndex: prev}) 
+      setCurrentPlaying({name: urls[prev].name, link: urls[prev].link})
+      setPlaying(true)
+    }
+  } else{
+    return
+  }
+
 }
 
 
@@ -138,9 +190,10 @@ const handleButtonClick=(buttonId)=>{
       pushToArray={pushToArray}
       handlePlay={handlePlay}
       globalState={globalState}
+      deleteSong={deleteSong}
       />
       <MediaDisplay trackUrl={trackUrl} action={mediaAction} audioRef={audioRef}  currentPlaying={currentPlaying} playing={playing}/> 
-      <ButtonModal 
+      <ButtonPanel 
       trackUrl={trackUrl} 
       handleButtonClick={handleButtonClick} 
       togglePlaying={togglePlaying} playing={playing} handleNext={handleNext} handlePrev={handlePrev} />
