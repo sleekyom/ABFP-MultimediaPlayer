@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import './InputField.css';
 
  class InputField extends Component {
@@ -7,12 +8,21 @@ import './InputField.css';
         const { trackUrl, userInput, pushToArray, trackName} = this.props
     return (
         <div className="inputField">
-            <form className="track">
-                <label>Insert your Url:</label>
-                <input type="text" id="name" name="trackName" value={trackName} placeholder="Add track name" onChange={trackUrl} />
-                <input type="text" name="userInput" id="track" placeholder="Add track" onChange={trackUrl} value={userInput}/>
-                <input type="submit" onClick={pushToArray} value="add" />
-            </form>
+            <Form className="track">
+
+              <Form.Group>
+                <Form.Label>Insert your Url</Form.Label>
+                <Form.Control size="sm" type="text" id="name" name="trackName" value={trackName} placeholder="Add track name" onChange={trackUrl}/>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control size="sm" type="text" name="userInput" id="track" placeholder="Add track link" onChange={trackUrl} value={userInput} />
+              </Form.Group>
+
+              <Button size="sm" variant="dark" type="submit" onClick={pushToArray} value="add">
+                Add
+              </Button>
+            </Form>
         </div>
     )      
 }

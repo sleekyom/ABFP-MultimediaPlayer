@@ -1,4 +1,20 @@
 .inputField{
-    color: white;
+    color: #f49f1c;
     margin-left: 8px;
+    margin-right: 8px;
+}
+
+.form-group{
+    margin-bottom: 10px !important;
+    font-size: 14px;
+}
+
+.btn-sm{
+    margin-bottom: 5px;
+}
+
+.btn-dark{
+    background-color: #f49f1c !important;
+    border-color: #f49f1c;
+    color: black !important;
 }
