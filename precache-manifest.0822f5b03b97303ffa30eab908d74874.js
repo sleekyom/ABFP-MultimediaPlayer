@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "777a4f4b48c8991d3035956e1144cd97",
+    "revision": "ce69b6ad2fa089c2fdec584795bdd894",
     "url": "/ABFP-MultimediaPlayer/index.html"
   },
   {
-    "revision": "455ded175ce0789216da",
+    "revision": "d77a7b605ef2a776fcbd",
     "url": "/ABFP-MultimediaPlayer/static/css/main.9e8f68cb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ABFP-MultimediaPlayer/static/js/2.9d4cbe77.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "455ded175ce0789216da",
-    "url": "/ABFP-MultimediaPlayer/static/js/main.8b0b73bd.chunk.js"
+    "revision": "d77a7b605ef2a776fcbd",
+    "url": "/ABFP-MultimediaPlayer/static/js/main.aaecbb19.chunk.js"
   },
   {
     "revision": "714eae3573b4cb7602d8",
